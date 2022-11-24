@@ -372,18 +372,18 @@ class BoletoData(object):
         if isinstance(list_inst, str):
             list_inst = list_inst.splitlines()
 
-        if len(list_inst) > 7:
+        if len(list_inst) > 11:
             raise BoletoException(
-                'Número de linhas de instruções maior que 7')
+                'Número de linhas de instruções maior que 11')
         for line in list_inst:
-            if len(line) > 90:
+            if len(line) > 100:
                 raise BoletoException(
-                    'Linha de instruções possui mais que 90 caracteres')
+                    'Linha de instruções possui mais que 100 caracteres')
         self._instrucoes = list_inst
     instrucoes = property(_instrucoes_get, _instrucoes_set)
     """Instruções para o caixa do banco que recebe o bilhete
 
-    Máximo de 7 linhas com 90 caracteres cada.
+    Máximo de 11 linhas com 100 caracteres cada.
     Geralmente contém instruções para aplicar multa ou não aceitar caso tenha
     passado a data de validade.
 

@@ -518,12 +518,12 @@ class BoletoPDF(object):
             'Instruções'
         )
 
-        self.pdf_canvas.setFont('Helvetica', self.font_size_value)
+        self.pdf_canvas.setFont('Helvetica', self.font_size_value - 1)
         instrucoes = boleto_dados.instrucoes
         for i in range(len(instrucoes)):
             self.pdf_canvas.drawString(
                 2 * self.space,
-                y - (i * self.delta_font),
+                y - (i * (self.delta_font - 1)),
                 instrucoes[i]
             )
         self.pdf_canvas.setFont('Helvetica', self.font_size_title)
