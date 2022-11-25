@@ -9,6 +9,7 @@
     :license: BSD, see LICENSE for more details.
 
 """
+import locale
 import os
 
 from reportlab.graphics.barcode.common import I2of5
@@ -868,7 +869,8 @@ class BoletoPDF(object):
     def _formataValorParaExibir(self, nfloat):
         if nfloat:
             txt = nfloat
-            txt = txt.replace('.', ',')
+            locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+            txt = locale.currency(txt, grouping=True, symbol=False)
         else:
             txt = ""
         return txt
