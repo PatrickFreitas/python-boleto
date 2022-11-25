@@ -868,12 +868,11 @@ class BoletoPDF(object):
 
     def _formataValorParaExibir(self, nfloat):
         if nfloat:
-            txt = nfloat
             locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-            txt = locale.currency(txt, grouping=True, symbol=False)
+            nfloat = locale.currency(float(nfloat), grouping=True, symbol=False)
         else:
-            txt = ""
-        return txt
+            nfloat = ""
+        return nfloat
 
     def _codigoBarraI25(self, num, x, y):
         """Imprime Código de barras otimizado para boletos
